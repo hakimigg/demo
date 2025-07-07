@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Website - Premium Electronics Store</title>
+  <meta name="theme-color" content="#ff6600" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Demo Website</div>
+        <button class="admin-toggle" onclick="document.getElementById('adminPanel').classList.toggle('active')">Admin Panel</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="admin-panel" id="adminPanel">
+      <h2 style="margin-bottom: 2rem; color: #333; text-align: center; font-size: 2rem;">Add New Product</h2>
+      <form id="productForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="productName">Product Name *</label>
+            <input type="text" id="productName" required />
+          </div>
+          <div class="form-group">
+            <label for="productPrice">Price *</label>
+            <input type="number" id="productPrice" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="productCondition">Condition *</label>
+            <select id="productCondition" required>
+              <option value="">Select Condition</option>
+              <option value="10/10">10/10 - Brand New</option>
+              <option value="9/10">9/10 - Excellent</option>
+              <option value="8/10">8/10 - Very Good</option>
+              <option value="7/10">7/10 - Good</option>
+              <option value="6/10">6/10 - Fair</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="productCategory">Category *</label>
+            <select id="productCategory" required>
+              <option value="">Select Category</option>
+              <option value="Smartphones">Smartphones</option>
+              <option value="Headphones">Headphones</option>
+              <option value="TV">TV</option>
+              <option value="WiFi Adapters">WiFi Adapters</option>
+              <option value="Laptops">Laptops</option>
+              <option value="Smartwatches">Smartwatches</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Product Image *</label>
+          <div class="image-upload-container">
+            <label class="upload-photo-btn" style="display:inline-block;position:relative;overflow:hidden;cursor:pointer;">
+              Upload Photo
+              <input type="file" id="imageInput" accept="image/*" style="opacity:0;position:absolute;left:0;top:0;width:100%;height:100%;cursor:pointer;" />
+            </label>
+            <div class="image-preview" id="imagePreview" style="display: none;">
+              <img id="previewImage" class="preview-image" alt="Preview" />
+              <br>
+              <button type="button" class="remove-image" id="removeImage">Remove Image</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="productDescription">Description *</label>
+          <textarea id="productDescription" rows="4" required></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phoneNumber">Contact Phone *</label>
+            <input type="tel" id="phoneNumber" required />
+          </div>
+          <div class="form-group">
+            <label for="shopLocation">Shop Location *</label>
+            <input type="text" id="shopLocation" required />
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Add Product</button>
+      </form>
+    </div>
+
+    <h1 class="section-title">Our Products</h1>
+
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Search by name or description..." />
+      <select id="filterCategory">
+        <option value="">All Categories</option>
+        <option value="Smartphones">Smartphones</option>
+        <option value="Headphones">Headphones</option>
+        <option value="TV">TV</option>
+        <option value="WiFi Adapters">WiFi Adapters</option>
+        <option value="Laptops">Laptops</option>
+        <option value="Smartwatches">Smartwatches</option>
+        <option value="Accessories">Accessories</option>
+      </select>
+      <select id="filterCondition">
+        <option value="">All Conditions</option>
+        <option value="10/10">10/10</option>
+        <option value="9/10">9/10</option>
+        <option value="8/10">8/10</option>
+        <option value="7/10">7/10</option>
+        <option value="6/10">6/10</option>
+      </select>
+      <input type="number" id="minPrice" placeholder="Min Price" />
+      <input type="number" id="maxPrice" placeholder="Max Price" />
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <div class="empty-state">
+        <h3>No products available</h3>
+        <p>Use the admin panel to add your first product!</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>
