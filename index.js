@@ -169,7 +169,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const adminBtn = document.querySelector(".admin-toggle");
-  if (adminBtn) adminBtn.addEventListener("click", toggleAdmin);
+  if (adminBtn) {
+    adminBtn.addEventListener("click", () => {
+      console.log("Admin button clicked!");
+      toggleAdmin();
+    });
+  }
 
   function createParticles() {
     const container = document.getElementById("particles");
