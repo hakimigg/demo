@@ -8,9 +8,9 @@
 }
 
 body {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  background: #E1d4C1;
   min-height: 100vh;
-  color: #f1f5f9;
+  color: #2d3748;
   animation: none;
 }
 
@@ -21,11 +21,11 @@ body {
 }
 
 header {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: #7E102C;
   color: #fff;
   padding: 1.5rem 0;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid #334155;
+  box-shadow: 0 4px 25px rgba(126, 16, 44, 0.3);
+  border-bottom: 1px solid #5a0b1f;
 }
 
 .header-content {
@@ -44,7 +44,7 @@ header {
 }
 
 .admin-toggle, .btn {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: #7E102C;
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -52,13 +52,14 @@ header {
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 15px rgba(126, 16, 44, 0.3);
   transition: all 0.3s ease;
   outline: none;
 }
 .admin-toggle:hover, .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 20px rgba(126, 16, 44, 0.4);
+  background: #6a0d25;
 }
 
 .admin-panel {
@@ -107,11 +108,11 @@ input:focus, textarea:focus, select:focus {
 .section-title {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: #7E102C;
   font-weight: 700;
   letter-spacing: 1px;
   animation: fadeInTitle 1.2s cubic-bezier(0.4,0,0.2,1);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 4px rgba(126, 16, 44, 0.2);
 }
 
 @keyframes fadeInTitle {
@@ -161,8 +162,8 @@ input:focus, textarea:focus, select:focus {
 
 .product-card:hover {
   transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  border-color: #3b82f6;
+  box-shadow: 0 12px 40px rgba(126, 16, 44, 0.15);
+  border-color: #7E102C;
 }
 
 .product-image {
@@ -429,7 +430,7 @@ input, textarea, select, .btn, .admin-toggle, .product-card, .filters, .image-up
 
 .modal-price {
   font-size: 1.5rem;
-  color: #3b82f6;
+  color: #7E102C;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
@@ -438,7 +439,7 @@ input, textarea, select, .btn, .admin-toggle, .product-card, .filters, .image-up
 .modal-category,
 .modal-brand {
   display: inline-block;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: #7E102C;
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 6px;
