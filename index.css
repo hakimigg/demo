@@ -30,7 +30,7 @@ header {
 
 .header-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
 }
@@ -40,7 +40,12 @@ header {
   align-items: center;
   animation: none;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.logo-spacer {
+  flex: 1;
+  min-width: 200px;
 }
 
 .logo-text {
