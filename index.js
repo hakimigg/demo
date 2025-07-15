@@ -14,6 +14,116 @@ document.addEventListener("DOMContentLoaded", function () {
     return JSON.parse(localStorage.getItem("products") || "[]");
   }
 
+  // Helper to save products to localStorage
+  function saveProducts(products) {
+    localStorage.setItem("products", JSON.stringify(products));
+  }
+
+  // Sample products to populate the site if empty
+  const sampleProducts = [
+    {
+      name: "Samsung Galaxy S23 Ultra",
+      price: "150000",
+      condition: "10/10",
+      category: "Smartphones",
+      brand: "Samsung",
+      image: "https://images.samsung.com/is/image/samsung/p6pim/levant/galaxy-s23/gallery/levant-galaxy-s23-ultra-s918-sm-s918bzkgmea-thumb-535678892?",
+      description: "Flagship Samsung phone with 200MP camera, 12GB RAM, 1TB storage.",
+      phone: "+213 555 123 456",
+      location: "Kouba",
+      created: Date.now() - 1000000
+    },
+    {
+      name: "Redmi Note 12 Pro",
+      price: "65000",
+      condition: "9/10",
+      category: "Smartphones",
+      brand: "Redmi",
+      image: "https://i01.appmifile.com/webfile/globalimg/products/pc/redmi-note-12-pro-5g/specs01.png",
+      description: "Affordable phone with 108MP camera, 8GB RAM, 256GB storage.",
+      phone: "+213 555 654 321",
+      location: "Cheraga",
+      created: Date.now() - 900000
+    },
+    {
+      name: "Hoco W35 Wireless Headphones",
+      price: "3500",
+      condition: "10/10",
+      category: "Headphones",
+      brand: "Hoco",
+      image: "https://www.hoco.com.cn/uploads/2022/11/20221122155313_68297.jpg",
+      description: "Bluetooth headphones with deep bass and 40h battery life.",
+      phone: "+213 555 222 333",
+      location: "Bab Ezzouar",
+      created: Date.now() - 800000
+    },
+    {
+      name: "Samsung 55'' 4K Smart TV",
+      price: "120000",
+      condition: "10/10",
+      category: "TV",
+      brand: "Samsung",
+      image: "https://images.samsung.com/is/image/samsung/p6pim/levant/ua55au7000uxzn/gallery/levant-uhd-au7000-ua55au7000uxzn-530384991?$650_519_PNG$",
+      description: "Crystal UHD, HDR, Smart TV with voice assistant.",
+      phone: "+213 555 444 555",
+      location: "El Harrach",
+      created: Date.now() - 700000
+    },
+    {
+      name: "TP-Link WiFi Adapter AC600",
+      price: "2500",
+      condition: "10/10",
+      category: "WiFi Adapters",
+      brand: "TP-Link",
+      image: "https://static.tp-link.com/2018/201812/20181228/20181228112019_4014.png",
+      description: "Dual band USB WiFi adapter for PC and laptop.",
+      phone: "+213 555 666 777",
+      location: "Bir Mourad Rais",
+      created: Date.now() - 600000
+    },
+    {
+      name: "HP Pavilion 15 Laptop",
+      price: "95000",
+      condition: "9/10",
+      category: "Laptops",
+      brand: "HP",
+      image: "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06567890.png",
+      description: "15.6'' FHD, Intel i7, 16GB RAM, 512GB SSD, Windows 11.",
+      phone: "+213 555 888 999",
+      location: "Hydra",
+      created: Date.now() - 500000
+    },
+    {
+      name: "Apple Watch Series 8",
+      price: "85000",
+      condition: "10/10",
+      category: "Smartwatches",
+      brand: "Apple",
+      image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MNJT3_VW_34FR+watch-45-alum-silver-cell-8s_VW_34FR_WF_CO_GEO_EMEA?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1660778453927,1661971860207",
+      description: "Latest Apple Watch, GPS + Cellular, 45mm, Silver Aluminum.",
+      phone: "+213 555 111 222",
+      location: "Birkhadem",
+      created: Date.now() - 400000
+    },
+    {
+      name: "Hoco X14 Fast Charging Cable",
+      price: "700",
+      condition: "10/10",
+      category: "Accessories",
+      brand: "Hoco",
+      image: "https://www.hoco.com.cn/uploads/2021/07/20210722155313_68297.jpg",
+      description: "1m USB-C to USB-A fast charging cable, 3A output.",
+      phone: "+213 555 333 444",
+      location: "Bab El Oued",
+      created: Date.now() - 300000
+    }
+  ];
+
+  // On load, if no products, populate with sample data
+  if (getProducts().length === 0) {
+    saveProducts(sampleProducts);
+  }
+
   function renderProducts(products) {
     const grid = document.getElementById("productsGrid");
 
