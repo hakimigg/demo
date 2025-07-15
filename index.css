@@ -8,9 +8,9 @@
 }
 
 body {
-  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   min-height: 100vh;
-  color: #2d3748;
+  color: #f1f5f9;
   animation: none;
 }
 
@@ -21,10 +21,11 @@ body {
 }
 
 header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #fff;
-  padding: 1rem 0;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  padding: 1.5rem 0;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #334155;
 }
 
 .header-content {
@@ -43,21 +44,21 @@ header {
 }
 
 .admin-toggle, .btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
   transition: all 0.3s ease;
   outline: none;
 }
 .admin-toggle:hover, .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .admin-panel {
@@ -144,12 +145,13 @@ input:focus, textarea:focus, select:focus {
 
 .product-card {
   background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: all 0.3s ease;
   animation: popIn 0.7s cubic-bezier(0.4,0,0.2,1);
   cursor: pointer;
+  border: 1px solid #e2e8f0;
 }
 
 @keyframes popIn {
@@ -158,8 +160,9 @@ input:focus, textarea:focus, select:focus {
 }
 
 .product-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 16px 40px rgba(102, 126, 234, 0.25);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #3b82f6;
 }
 
 .product-image {
@@ -338,9 +341,9 @@ input, textarea, select, .btn, .admin-toggle, .product-card, .filters, .image-up
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
-  animation: fadeIn 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.4s ease;
 }
 
 @keyframes fadeIn {
@@ -350,16 +353,17 @@ input, textarea, select, .btn, .admin-toggle, .product-card, .filters, .image-up
 
 .modal-content {
   background-color: #fff;
-  margin: 5% auto;
+  margin: 2% auto;
   padding: 0;
-  border-radius: 20px;
-  width: 90%;
-  max-width: 800px;
-  max-height: 90vh;
+  border-radius: 0;
+  width: 95%;
+  max-width: 1000px;
+  height: 96vh;
   overflow-y: auto;
   position: relative;
-  animation: slideIn 0.3s ease;
-  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+  animation: slideIn 0.4s ease;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+  border: 1px solid #e2e8f0;
 }
 
 @keyframes slideIn {
@@ -394,12 +398,12 @@ input, textarea, select, .btn, .admin-toggle, .product-card, .filters, .image-up
 
 .modal-image {
   width: 100%;
-  height: 300px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 400px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px 20px 0 0;
+  border-bottom: 2px solid #e2e8f0;
 }
 
 .modal-image img {
@@ -425,7 +429,7 @@ input, textarea, select, .btn, .admin-toggle, .product-card, .filters, .image-up
 
 .modal-price {
   font-size: 1.5rem;
-  color: #667eea;
+  color: #3b82f6;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
@@ -434,10 +438,10 @@ input, textarea, select, .btn, .admin-toggle, .product-card, .filters, .image-up
 .modal-category,
 .modal-brand {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
   padding: 0.3rem 0.8rem;
-  border-radius: 20px;
+  border-radius: 6px;
   font-size: 0.9rem;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
