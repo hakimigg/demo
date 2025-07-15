@@ -7,19 +7,14 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Remove variables and event listeners for imageInput, imagePreview, previewImage, removeImageBtn, productForm, etc.
-
-  // Helper to get products from localStorage
   function getProducts() {
     return JSON.parse(localStorage.getItem("products") || "[]");
   }
 
-  // Helper to save products to localStorage
   function saveProducts(products) {
     localStorage.setItem("products", JSON.stringify(products));
   }
 
-  // Sample products to populate the site if empty
   const sampleProducts = [
     {
       name: "Samsung Galaxy S23 Ultra",
@@ -34,6 +29,18 @@ document.addEventListener("DOMContentLoaded", function () {
       created: Date.now() - 1000000
     },
     {
+      name: "iPhone 14 Pro Max",
+      price: "170000",
+      condition: "10/10",
+      category: "Smartphones",
+      brand: "Apple",
+      image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-pro-model-unselect-gallery-1-202209?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1661969350640",
+      description: "Latest iPhone with Dynamic Island and A16 chip.",
+      phone: "+213 777 123 111",
+      location: "Bab El Oued",
+      created: Date.now() - 990000
+    },
+    {
       name: "Redmi Note 12 Pro",
       price: "65000",
       condition: "9/10",
@@ -43,7 +50,67 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "Affordable phone with 108MP camera, 8GB RAM, 256GB storage.",
       phone: "+213 555 654 321",
       location: "Cheraga",
+      created: Date.now() - 950000
+    },
+    {
+      name: "Asus ROG Zephyrus G14",
+      price: "200000",
+      condition: "10/10",
+      category: "Laptops",
+      brand: "Asus",
+      image: "https://dlcdnwebimgs.asus.com/gain/9b1cb5a5-4bc4-48fd-8e69-b44bcbd58b61/",
+      description: "Gaming laptop with Ryzen 9, RTX 4060, 1TB SSD.",
+      phone: "+213 555 999 000",
+      location: "El Madania",
+      created: Date.now() - 920000
+    },
+    {
+      name: "HP Pavilion 15 Laptop",
+      price: "95000",
+      condition: "9/10",
+      category: "Laptops",
+      brand: "HP",
+      image: "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06567890.png",
+      description: "15.6'' FHD, Intel i7, 16GB RAM, 512GB SSD, Windows 11.",
+      phone: "+213 555 888 999",
+      location: "Hydra",
       created: Date.now() - 900000
+    },
+    {
+      name: "Lenovo IdeaPad Slim 5",
+      price: "72000",
+      condition: "8/10",
+      category: "Laptops",
+      brand: "Lenovo",
+      image: "https://p1-ofp.static.pub/fes/cms/2022/05/26/oiq4wqx5um1j6nkz9e0o1fjvlgx7sh161118.png",
+      description: "Slim design with Ryzen 5, 8GB RAM, 512GB SSD.",
+      phone: "+213 661 400 222",
+      location: "Bir Mourad Rais",
+      created: Date.now() - 870000
+    },
+    {
+      name: "Samsung 55'' 4K Smart TV",
+      price: "120000",
+      condition: "10/10",
+      category: "TV",
+      brand: "Samsung",
+      image: "https://images.samsung.com/is/image/samsung/p6pim/levant/ua55au7000uxzn/gallery/levant-uhd-au7000-ua55au7000uxzn-530384991?$650_519_PNG$",
+      description: "Crystal UHD, HDR, Smart TV with voice assistant.",
+      phone: "+213 555 444 555",
+      location: "El Harrach",
+      created: Date.now() - 850000
+    },
+    {
+      name: "Sony Bravia 50'' TV",
+      price: "95000",
+      condition: "9/10",
+      category: "TV",
+      brand: "Sony",
+      image: "https://www.sony.com/image/5943a8eb6dfe26a5f68f59cb1fd9739f?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF",
+      description: "4K Ultra HD LED with Android TV features.",
+      phone: "+213 555 543 987",
+      location: "Birkhadem",
+      created: Date.now() - 820000
     },
     {
       name: "Hoco W35 Wireless Headphones",
@@ -58,16 +125,16 @@ document.addEventListener("DOMContentLoaded", function () {
       created: Date.now() - 800000
     },
     {
-      name: "Samsung 55'' 4K Smart TV",
-      price: "120000",
-      condition: "10/10",
-      category: "TV",
-      brand: "Samsung",
-      image: "https://images.samsung.com/is/image/samsung/p6pim/levant/ua55au7000uxzn/gallery/levant-uhd-au7000-ua55au7000uxzn-530384991?$650_519_PNG$",
-      description: "Crystal UHD, HDR, Smart TV with voice assistant.",
-      phone: "+213 555 444 555",
-      location: "El Harrach",
-      created: Date.now() - 700000
+      name: "JBL Tune 500BT",
+      price: "7500",
+      condition: "9/10",
+      category: "Headphones",
+      brand: "JBL",
+      image: "https://uk.jbl.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw19cf28e2/JBL_TUNE500BT_Product%20Image_Hero_Black.png",
+      description: "On-ear wireless headphones with pure bass sound.",
+      phone: "+213 555 777 888",
+      location: "Tizi Ouzou",
+      created: Date.now() - 780000
     },
     {
       name: "TP-Link WiFi Adapter AC600",
@@ -79,19 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "Dual band USB WiFi adapter for PC and laptop.",
       phone: "+213 555 666 777",
       location: "Bir Mourad Rais",
-      created: Date.now() - 600000
-    },
-    {
-      name: "HP Pavilion 15 Laptop",
-      price: "95000",
-      condition: "9/10",
-      category: "Laptops",
-      brand: "HP",
-      image: "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06567890.png",
-      description: "15.6'' FHD, Intel i7, 16GB RAM, 512GB SSD, Windows 11.",
-      phone: "+213 555 888 999",
-      location: "Hydra",
-      created: Date.now() - 500000
+      created: Date.now() - 760000
     },
     {
       name: "Apple Watch Series 8",
@@ -103,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "Latest Apple Watch, GPS + Cellular, 45mm, Silver Aluminum.",
       phone: "+213 555 111 222",
       location: "Birkhadem",
-      created: Date.now() - 400000
+      created: Date.now() - 740000
     },
     {
       name: "Hoco X14 Fast Charging Cable",
@@ -115,18 +170,16 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "1m USB-C to USB-A fast charging cable, 3A output.",
       phone: "+213 555 333 444",
       location: "Bab El Oued",
-      created: Date.now() - 300000
+      created: Date.now() - 700000
     }
   ];
 
-  // On load, if no products, populate with sample data
   if (getProducts().length === 0) {
     saveProducts(sampleProducts);
   }
 
   function renderProducts(products) {
     const grid = document.getElementById("productsGrid");
-
     if (!products.length) {
       grid.innerHTML = `
         <div class="empty-state">
@@ -139,14 +192,12 @@ document.addEventListener("DOMContentLoaded", function () {
     grid.innerHTML = products.map((p, i) => `
       <div class="product-card" style="animation-delay: ${i * 0.1}s">
         <div class="product-image">
-          ${p.image
-            ? `<img src="${p.image}" alt="${p.name}">`
-            : `<div class="image-placeholder">No image added yet</div>`}
+          ${p.image ? `<img src="${p.image}" alt="${p.name}">` : `<div class="image-placeholder">No image</div>`}
         </div>
         <div class="product-info">
           <div class="product-title">${p.name}</div>
           <div class="product-condition">Condition: ${p.condition}</div>
-          <div class="product-price">${p.price}</div>
+          <div class="product-price">${p.price} DZD</div>
           <div class="product-description">${p.description}</div>
           <div class="contact-info">
             <div class="phone">${p.phone}</div>
@@ -157,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
     `).join("");
   }
 
-  // On load, render products from localStorage
   renderProducts(getProducts());
 
   function createParticles() {
