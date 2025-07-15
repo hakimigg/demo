@@ -176,6 +176,8 @@ input:focus, textarea:focus, select:focus {
 .filters select {
   flex: 1;
   min-width: 200px;
+  padding: 0.8rem;
+  font-size: 1rem;
 }
 
 .filters input:focus, .filters select:focus {
