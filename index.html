@@ -54,6 +54,34 @@
         <p>Use the admin panel to add your first product!</p>
       </div>
     </div>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+          <div class="modal-image">
+            <img id="modalImage" src="" alt="">
+          </div>
+          <div class="modal-info">
+            <h2 id="modalTitle"></h2>
+            <div class="modal-price" id="modalPrice"></div>
+            <div class="modal-condition" id="modalCondition"></div>
+            <div class="modal-category" id="modalCategory"></div>
+            <div class="modal-brand" id="modalBrand"></div>
+            <p id="modalDescription"></p>
+            <div class="modal-contact">
+              <div class="contact-item">
+                <strong>Phone:</strong> <span id="modalPhone"></span>
+              </div>
+              <div class="contact-item">
+                <strong>Location:</strong> <span id="modalLocation"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script type="module" src="index.js"></script>
