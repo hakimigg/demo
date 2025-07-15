@@ -292,7 +292,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  renderProducts(getProducts());
+  // Load and display products
+  try {
+    const products = getProducts();
+    console.log('Products loaded:', products.length);
+    renderProducts(products);
+  } catch (error) {
+    console.error('Error loading products:', error);
+    // Fallback: load sample products directly
+    renderProducts(sampleProducts);
+  }
 
   // Add click event listeners to product cards
   document.addEventListener('click', function(e) {
