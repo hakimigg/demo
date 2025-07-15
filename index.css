@@ -40,15 +40,7 @@ header {
   align-items: center;
   animation: none;
   width: 100%;
-  justify-content: space-between;
-}
-
-.logo-spacer {
-  flex: 1;
-  min-width: 200px;
-  font-size: 2rem;
-  color: rgba(255, 255, 255, 0.3);
-  text-align: center;
+  justify-content: center;
 }
 
 .logo-text {
