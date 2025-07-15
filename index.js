@@ -169,9 +169,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   ];
 
-  if (getProducts().length === 0) {
-    saveProducts(sampleProducts);
-  }
+  // Always overwrite products with sample data for demo
+  saveProducts(sampleProducts);
 
   function renderProducts(products) {
     const grid = document.getElementById("productsGrid");
