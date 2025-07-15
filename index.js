@@ -1,3 +1,31 @@
+// Global modal function
+function openModal(product) {
+  const modal = document.getElementById("productModal");
+  const modalImage = document.getElementById("modalImage");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalPrice = document.getElementById("modalPrice");
+  const modalCondition = document.getElementById("modalCondition");
+  const modalCategory = document.getElementById("modalCategory");
+  const modalBrand = document.getElementById("modalBrand");
+  const modalDescription = document.getElementById("modalDescription");
+  const modalPhone = document.getElementById("modalPhone");
+  const modalLocation = document.getElementById("modalLocation");
+
+  modalImage.src = product.image || "";
+  modalImage.alt = product.name;
+  modalTitle.textContent = product.name;
+  modalPrice.textContent = `${product.price} DZD`;
+  modalCondition.textContent = `Condition: ${product.condition}`;
+  modalCategory.textContent = product.category;
+  modalBrand.textContent = product.brand;
+  modalDescription.textContent = product.description;
+  modalPhone.textContent = product.phone;
+  modalLocation.textContent = product.location;
+
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   function getProducts() {
     return JSON.parse(localStorage.getItem("products") || "[]");
@@ -181,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     grid.innerHTML = products.map((p, i) => `
-      <div class="product-card" style="animation-delay: ${i * 0.1}s" onclick="openModal(${JSON.stringify(p).replace(/"/g, '&quot;')})">
+      <div class="product-card" style="animation-delay: ${i * 0.1}s" data-product='${JSON.stringify(p).replace(/"/g, '&quot;')}'>
         <div class="product-image">
           ${p.image ? `<img src="${p.image}" alt="${p.name}">` : `<div class="image-placeholder">No image</div>`}
         </div>
@@ -197,34 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </div>
     `).join("");
-  }
-
-  // Modal functionality
-  function openModal(product) {
-    const modal = document.getElementById("productModal");
-    const modalImage = document.getElementById("modalImage");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalPrice = document.getElementById("modalPrice");
-    const modalCondition = document.getElementById("modalCondition");
-    const modalCategory = document.getElementById("modalCategory");
-    const modalBrand = document.getElementById("modalBrand");
-    const modalDescription = document.getElementById("modalDescription");
-    const modalPhone = document.getElementById("modalPhone");
-    const modalLocation = document.getElementById("modalLocation");
-
-    modalImage.src = product.image || "";
-    modalImage.alt = product.name;
-    modalTitle.textContent = product.name;
-    modalPrice.textContent = `${product.price} DZD`;
-    modalCondition.textContent = `Condition: ${product.condition}`;
-    modalCategory.textContent = product.category;
-    modalBrand.textContent = product.brand;
-    modalDescription.textContent = product.description;
-    modalPhone.textContent = product.phone;
-    modalLocation.textContent = product.location;
-
-    modal.style.display = "block";
-    document.body.style.overflow = "hidden";
   }
 
   // Close modal when clicking the X button
@@ -255,6 +255,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   renderProducts(getProducts());
+
+  // Add click event listeners to product cards
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.product-card')) {
+      const card = e.target.closest('.product-card');
+      const productData = card.getAttribute('data-product');
+      if (productData) {
+        const product = JSON.parse(productData.replace(/&quot;/g, '"'));
+        openModal(product);
+      }
+    }
+  });
 
   function createParticles() {
     const container = document.getElementById("particles");
