@@ -166,10 +166,16 @@ input:focus, textarea:focus, select:focus {
   gap: 1rem;
   margin-bottom: 2rem;
   background-color: #fff;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(34, 48, 74, 0.06);
   transition: box-shadow 0.2s;
+}
+
+.filters input,
+.filters select {
+  flex: 1;
+  min-width: 200px;
 }
 
 .filters input:focus, .filters select:focus {
