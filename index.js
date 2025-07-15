@@ -227,6 +227,47 @@ document.addEventListener("DOMContentLoaded", function () {
     `).join("");
   }
 
+  // Filtering functionality
+  function filterProducts() {
+    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+    const categoryFilter = document.getElementById("filterCategory").value;
+    const conditionFilter = document.getElementById("filterCondition").value;
+    const minPrice = document.getElementById("minPrice").value;
+    const maxPrice = document.getElementById("maxPrice").value;
+
+    const products = getProducts();
+    
+    const filteredProducts = products.filter(product => {
+      // Search filter
+      const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                           product.description.toLowerCase().includes(searchTerm) ||
+                           product.brand.toLowerCase().includes(searchTerm);
+      
+      // Category filter
+      const matchesCategory = !categoryFilter || product.category === categoryFilter;
+      
+      // Condition filter
+      const matchesCondition = !conditionFilter || product.condition === conditionFilter;
+      
+      // Price filter
+      const productPrice = parseInt(product.price);
+      const minPriceNum = minPrice ? parseInt(minPrice) : 0;
+      const maxPriceNum = maxPrice ? parseInt(maxPrice) : Infinity;
+      const matchesPrice = productPrice >= minPriceNum && productPrice <= maxPriceNum;
+      
+      return matchesSearch && matchesCategory && matchesCondition && matchesPrice;
+    });
+    
+    renderProducts(filteredProducts);
+  }
+
+  // Add event listeners for all filter inputs
+  document.getElementById("searchInput").addEventListener("input", filterProducts);
+  document.getElementById("filterCategory").addEventListener("change", filterProducts);
+  document.getElementById("filterCondition").addEventListener("change", filterProducts);
+  document.getElementById("minPrice").addEventListener("input", filterProducts);
+  document.getElementById("maxPrice").addEventListener("input", filterProducts);
+
   // Close modal when clicking the X button
   document.querySelector(".close").addEventListener("click", function() {
     const modal = document.getElementById("productModal");
