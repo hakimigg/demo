@@ -17,87 +17,13 @@
     <div class="container">
       <div class="header-content">
         <div class="logo">Demo Website</div>
-        <button class="admin-toggle">Admin Panel</button>
+        <!-- Removed admin-toggle button -->
       </div>
     </div>
   </header>
 
   <div class="container">
-    <div class="admin-panel" id="adminPanel">
-      <h2 style="margin-bottom: 2rem; color: #333; text-align: center; font-size: 2rem;">Add New Product</h2>
-      <form id="productForm">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="productName">Product Name *</label>
-            <input type="text" id="productName" required />
-          </div>
-          <div class="form-group">
-            <label for="productPrice">Price *</label>
-            <input type="number" id="productPrice" required />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="productCondition">Condition *</label>
-            <select id="productCondition" required>
-              <option value="">Select Condition</option>
-              <option value="10/10">10/10 - Brand New</option>
-              <option value="9/10">9/10 - Excellent</option>
-              <option value="8/10">8/10 - Very Good</option>
-              <option value="7/10">7/10 - Good</option>
-              <option value="6/10">6/10 - Fair</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="productCategory">Category *</label>
-            <select id="productCategory" required>
-              <option value="">Select Category</option>
-              <option value="Smartphones">Smartphones</option>
-              <option value="Headphones">Headphones</option>
-              <option value="TV">TV</option>
-              <option value="WiFi Adapters">WiFi Adapters</option>
-              <option value="Laptops">Laptops</option>
-              <option value="Smartwatches">Smartwatches</option>
-              <option value="Accessories">Accessories</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Product Image *</label>
-          <div class="image-upload-container">
-            <label class="upload-photo-btn" style="display:inline-block;position:relative;overflow:hidden;cursor:pointer;">
-              Upload Photo
-              <input type="file" id="imageInput" accept="image/*" style="opacity:0;position:absolute;left:0;top:0;width:100%;height:100%;cursor:pointer;" />
-            </label>
-            <div class="image-preview" id="imagePreview" style="display: none;">
-              <img id="previewImage" class="preview-image" alt="Preview" />
-              <br>
-              <button type="button" class="remove-image" id="removeImage">Remove Image</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="productDescription">Description *</label>
-          <textarea id="productDescription" rows="4" required></textarea>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="phoneNumber">Contact Phone *</label>
-            <input type="tel" id="phoneNumber" required />
-          </div>
-          <div class="form-group">
-            <label for="shopLocation">Shop Location *</label>
-            <input type="text" id="shopLocation" required />
-          </div>
-        </div>
-
-        <button type="submit" class="btn">Add Product</button>
-      </form>
-    </div>
+    <!-- Removed admin-panel and productForm -->
 
     <h1 class="section-title">Our Products</h1>
 
