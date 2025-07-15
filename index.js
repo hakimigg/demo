@@ -1,17 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCHmc0JYyz1S-8mTleIG94gfLhKrvONdvQ",
-  authDomain: "fir-963c4.firebaseapp.com",
-  projectId: "fir-963c4",
-  storageBucket: "fir-963c4.appspot.com",
-  messagingSenderId: "1803094593",
-  appId: "1:1803094593:web:618565cc395f294673d4c0",
-  measurementId: "G-8PFC0TNWDW"
-};
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
@@ -65,20 +53,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Helper to get products from localStorage
+  function getProducts() {
+    return JSON.parse(localStorage.getItem("products") || "[]");
+  }
+
+  // Helper to save products to localStorage
+  function saveProducts(products) {
+    localStorage.setItem("products", JSON.stringify(products));
+  }
+
   document.getElementById("productForm").addEventListener("submit", async function (e) {
     e.preventDefault();
     let imageUrl = selectedImageBase64;
 
-    if (selectedImageBase64.startsWith("data:")) {
-      try {
-        const blob = await (await fetch(selectedImageBase64)).blob();
-        const storageRef = ref(storage, `product-images/${Date.now()}.jpg`);
-        await uploadBytes(storageRef, blob);
-        imageUrl = await getDownloadURL(storageRef);
-      } catch (err) {
-        console.error("Image upload failed:", err);
-      }
-    }
+    // No upload, just use base64
+    // if (selectedImageBase64.startsWith("data:")) { ... }
 
     const product = {
       name: document.getElementById("productName").value,
@@ -92,11 +82,11 @@ document.addEventListener("DOMContentLoaded", function () {
       created: Date.now()
     };
 
-    try {
-      await addDoc(collection(db, "products"), product);
-    } catch (err) {
-      console.error("Failed to save to Firestore:", err);
-    }
+    // Save to localStorage
+    const products = getProducts();
+    products.unshift(product); // Add to start
+    saveProducts(products);
+    renderProducts(products);
 
     const btn = document.querySelector(".btn");
     const originalText = btn.textContent;
@@ -147,13 +137,11 @@ document.addEventListener("DOMContentLoaded", function () {
     `).join("");
   }
 
-  function listenToProducts() {
-    const q = query(collection(db, "products"), orderBy("created", "desc"));
-    onSnapshot(q, (snapshot) => {
-      const products = snapshot.docs.map(doc => doc.data());
-      renderProducts(products);
-    });
-  }
+  // Remove listenToProducts and Firestore snapshot
+  // function listenToProducts() { ... }
+
+  // On load, render products from localStorage
+  renderProducts(getProducts());
 
   function toggleAdmin() {
     const panel = document.getElementById("adminPanel");
@@ -189,5 +177,4 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   createParticles();
-  listenToProducts();
 });
