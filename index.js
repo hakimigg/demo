@@ -233,7 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoryFilter = document.getElementById("filterCategory").value;
     const conditionFilter = document.getElementById("filterCondition").value;
     const minPrice = document.getElementById("minPrice").value;
-    const maxPrice = document.getElementById("maxPrice").value;
 
     const products = getProducts();
     
@@ -252,8 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Price filter
       const productPrice = parseInt(product.price);
       const minPriceNum = minPrice ? parseInt(minPrice) : 0;
-      const maxPriceNum = maxPrice ? parseInt(maxPrice) : Infinity;
-      const matchesPrice = productPrice >= minPriceNum && productPrice <= maxPriceNum;
+      const matchesPrice = productPrice >= minPriceNum;
       
       return matchesSearch && matchesCategory && matchesCondition && matchesPrice;
     });
@@ -266,7 +264,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("filterCategory").addEventListener("change", filterProducts);
   document.getElementById("filterCondition").addEventListener("change", filterProducts);
   document.getElementById("minPrice").addEventListener("input", filterProducts);
-  document.getElementById("maxPrice").addEventListener("input", filterProducts);
 
   // Close modal when clicking the X button
   document.querySelector(".close").addEventListener("click", function() {
