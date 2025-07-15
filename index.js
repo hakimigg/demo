@@ -1,6 +1,3 @@
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js";
-
 document.addEventListener("DOMContentLoaded", function () {
   function getProducts() {
     return JSON.parse(localStorage.getItem("products") || "[]");
