@@ -23,21 +23,24 @@ body {
 header {
   background: #7E102C;
   color: #fff;
-  padding: 1.5rem 0;
+  padding: 2rem 0;
   box-shadow: 0 4px 25px rgba(126, 16, 44, 0.3);
   border-bottom: 1px solid #5a0b1f;
 }
 
 .header-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .logo {
   display: flex;
   align-items: center;
   animation: none;
+  width: 100%;
+  justify-content: center;
 }
 
 .logo-text {
@@ -46,7 +49,7 @@ header {
 }
 
 .logo-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #fff;
   letter-spacing: 1.5px;
@@ -55,12 +58,12 @@ header {
 }
 
 .logo-subtitle {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: #e5e7eb;
   font-weight: 400;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
 }
 
 .admin-toggle, .btn {
