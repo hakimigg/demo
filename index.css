@@ -161,12 +161,18 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 12px 32px rgba(58, 122, 254, 0.10);
 }
 
+.product-image {
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+
 .product-image img {
   width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px 8px 0 0;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 6px;
   max-width: 100%;
+  background-color: white;
 }
 
 .product-info {
